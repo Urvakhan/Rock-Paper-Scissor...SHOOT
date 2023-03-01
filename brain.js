@@ -4,7 +4,8 @@
 //  - 3) player and computer values are compared
 //  - 4) winner is logged
 
-const playerChoice = prompt('Choose your Warrior');
+
+const playerChoice = prompt('Choose your Champion!');
 
 console.log(playerChoice);
 
@@ -16,13 +17,13 @@ const optionsMap = {
         paper: 'Loose',
         scissors: 'Enemy Felled!',
 
-    }, 
+    },
     paper: {
         rock: 'Phyrric Victory',
         paper: 'Tie',
         scissors: 'Loose',
     },
-       
+
     scissors: {
         rock: 'Loose',
         paper: 'Foe Vanquished!',
@@ -38,11 +39,17 @@ const computerPick = () => {
 }
 
 const play = () => {
-    
+
+    if (!playerChoice || !optionsMap[playerChoice.toLowerCase()]) {
+        console.log('Champions consist of Rock, Paper, or Scissors.');
+        return;
+    }
+
     const computerChoice = computerPick();
 
+    const _playerChoice = playerChoice.toLowerCase();
 
-    console.log(optionsMap[playerChoice][computerChoice]);
+    console.log(optionsMap[_playerChoice][computerChoice]);
 }
 
 play()
